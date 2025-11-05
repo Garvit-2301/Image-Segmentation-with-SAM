@@ -13,12 +13,12 @@ Build a **functional object segmentation tool** to isolate objects for editing, 
 
 - [Setup & Usage](#setup--usage)
 - [Model Choice Rationale](#model-choice-rationale)
+- [Evaluation Images & Cases](#evaluation-images--cases)
 - [Results & Failure Analysis](#results--failure-analysis)
 - [SAM Architecture (Explained)](#sam-architecture-explained)
 - [Mobile Optimization Strategies](#mobile-optimization-strategies)
 - [Comparison with Other Approaches](#comparison-with-other-approaches)
 - [Best Practices & Limitations](#best-practices--limitations)
-- [Streamlit App & Deployment](#streamlit-app--deployment)
 - [References](#references)
 
 ---
@@ -27,48 +27,22 @@ Build a **functional object segmentation tool** to isolate objects for editing, 
 
 **Requirements:**  
 - Python 3.8+
-- `pip install torch ultralytics pillow matplotlib streamlit`
+- `pip install torch ultralytics pillow matplotlib`
 
-**Option 1 — Command Line Demo:**  
-1. Download your evaluation/test images and save them as:  
+**How to run:**  
+1. Download [the evaluation images](#evaluation-images--cases) and save them as:  
    - `image1.jpeg`
    - `image2.jpg`
    - `image3.jpeg`
    - `image4.jpeg`
-2. Run the script (e.g. `sam_file.py`):  
+2. Run the main script:  
    ```
    python sam_file.py
    ```
 3. Segmentation overlays will open for each case, and timings print in console.
 
-**Option 2 — Streamlit Interactive App:**  
-1. Make sure you have the main Streamlit app script (e.g. `ui.py` or `webui.py` as per your project).
-2. Run in the terminal:
-   ```
-   streamlit run ui.py
-   ```
-   or, if your file is named differently:
-   ```
-   streamlit run webui.py
-   ```
-3. Upload your own `.jpg`/`.jpeg`/`.png` image in the browser UI.  
-   - Wait for model to load (see sidebar/info in app).
-   - Click the segmentation button to view mask overlays and results.
-
-**Troubleshooting for Streamlit:**
-- If you get a `libGL.so.1` missing error (common on Linux/Cloud), add a `packages.txt` file in your repo with the line:
-  ```
-  libgl1
-  ```
-  *This ensures OpenCV works on Streamlit Cloud or other hosted platforms.*
-- Confirm your `requirements.txt` includes:  
-  ```
-  torch
-  ultralytics
-  pillow
-  matplotlib
-  streamlit
-  ```
+**Customization:**  
+- To test your own images, add their paths to the script.
 
 ---
 
@@ -159,33 +133,6 @@ For integration into a future mobile AI app:
 
 ---
 
-## Streamlit App & Deployment
-
-- **Running locally:**  
-  Simply run:
-  ```
-  streamlit run ui.py
-  ```
-- **Deploying to Streamlit Community Cloud:**
-  1. Push your code to a **GitHub repository**.
-  2. Add a `requirements.txt` file with:
-      ```
-      torch
-      ultralytics
-      pillow
-      matplotlib
-      streamlit
-      ```
-  3. (If needed for OpenCV) Add a `packages.txt` file with:
-      ```
-      libgl1
-      ```
-  4. In Streamlit Cloud, click "New App", point to your repo & `ui.py`.
-  5. Launch, upload images, and run segmentations from anywhere!
-  6. If you make further changes or fixes, just push to GitHub and your deployed app will update.
-
----
-
 ## References
 
 - [SAM (Segment Anything Model) Paper](https://arxiv.org/abs/2304.02643)
@@ -194,6 +141,5 @@ For integration into a future mobile AI app:
 - [MODNet: Real-Time Trimap-Free Human Matting](https://arxiv.org/abs/2011.11961)
 - [Unsplash Creative Commons Images](https://unsplash.com/)
 - [Ultralytics GitHub](https://github.com/ultralytics/ultralytics)
-- [Streamlit Docs: Deploying](https://docs.streamlit.io/streamlit-community-cloud)
 
 ---
